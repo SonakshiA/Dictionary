@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" style="margin: 50px;">
+        <h2 id="word" name="word"><%= word %></h2>
+        <p id="meaning" name="meaning"><%= meaning %></p>
+        <form class="row g-3" action="/" method="GET" style="display: inline-block;">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Generate</button>
+            </div>
+        </form>
+
+        <form class="row g-3" action="/post" method="POST" style="display: inline-block;">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Add Word</button>
+            </div>
+        </form>
+        <h4 style="margin-top: 50px; margin-bottom: 30px;">My Words</h4>
+        <% if(words.length>0) { %>
+            <% words.forEach(word => { %>
+                <dl style="margin-left: 8px;">
+                    <dt><%= word.word %></dt>
+                    <dd><%= word.meaning %></dd>
+                    <a href="/delete/<%= word._id %>" type="button" class="btn btn-outline-danger btn-sm" style="display: inline;">Delete</a>
+                </dl>
+            <% }) %>
+        <% } %>
+    </div>
+</body>
+</html>
